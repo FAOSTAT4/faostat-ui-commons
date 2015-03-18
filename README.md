@@ -1,2 +1,2 @@
-# faostat-ui-commons
-FAOSTAT UI Commons
+# FAOSTAT UI Commons
+Common libraries for FAOSTAT project.
