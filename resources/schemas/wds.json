@@ -49,7 +49,7 @@
             "datasource": {
                "$ref": "#/definitions/datasource"
             },
-            "domain_code": {
+            "domain": {
                "type": "string",
                "title": "Domain Code",
                "description": "FAOSTAT Domain Code."
