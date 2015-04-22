@@ -43,10 +43,11 @@ define(['require',
         }
     };
 
-    COMMONS.prototype.wdsclient = function(rest_service_name, parameters, callback) {
+    COMMONS.prototype.wdsclient = function(rest_service_name, parameters, callback, url_root) {
 
         /* Root URL. */
-        var url = this.CONFIG.wds_root + '/' + rest_service_name + '/';
+        var url = url_root != null ? url_root : this.CONFIG.wds_root;
+        url += '/' + rest_service_name + '/';
 
         /* Load REST definition. */
         var rest_parameters = this.CONFIG.wds_schema.properties[rest_service_name].properties;
