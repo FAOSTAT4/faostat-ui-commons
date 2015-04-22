@@ -1,0 +1,63 @@
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "type": "object",
+   "title": "WDS Schema",
+   "description": "Definition of WDS web services.",
+   "definitions": {
+      "datasource": {
+         "type": "string",
+         "title": "Datasource",
+         "description": "FAOSTAT datasource.",
+         "default": "faostatdb",
+         "enum": [
+            "faostat",
+            "faostatdb",
+            "faostatglbl",
+            "faostatprod",
+            "faostatproddiss"
+         ]
+      },
+      "lang_faostat": {
+         "type": "string",
+         "title": "Language",
+         "description": "Language of the output.",
+         "default": "E",
+         "enum": ["E", "F", "S", "A", "C", "R"]
+      }
+   },
+   "properties": {
+      "groupsanddomains": {
+         "type": "object",
+         "title": "Groups and Domains",
+         "description": "List of FAOSTAT groups and domains",
+         "method": "GET",
+         "properties": {
+            "datasource": {
+               "$ref": "#/definitions/datasource"
+            },
+            "lang_faostat": {
+               "$ref": "#/definitions/lang_faostat"
+            }
+         }
+      },
+      "bulkdownloads": {
+         "type": "object",
+         "title": "Bulk Downloads",
+         "description": "List of FAOSTAT bulk downloads.",
+         "method": "GET",
+         "properties": {
+            "datasource": {
+               "$ref": "#/definitions/datasource"
+            },
+            "domain_code": {
+               "type": "string",
+               "title": "Domain Code",
+               "description": "FAOSTAT Domain Code."
+            },
+            "lang_faostat": {
+               "$ref": "#/definitions/lang_faostat"
+            }
+         }
+      }
+   }
+}
