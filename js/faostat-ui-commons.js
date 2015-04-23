@@ -19,7 +19,19 @@ define(['require',
             prefix: 'faostat_ui_commons_',
             placeholder_id: 'faostat_ui_commons',
             wds_schema: $.parseJSON(wds_schema),
-            wds_root: 'http://faostat3.fao.org/wds/rest'
+            wds_root: 'http://faostat3.fao.org/wds/rest',
+            wds_settings: {
+                json: {
+                    query: null
+                },
+                datasource: 'faostat',
+                thousandSeparator: ',',
+                decimalSeparator: '.',
+                decimalNumbers: 2,
+                cssFilename: '',
+                nowrap: false,
+                valuesIndex: 0
+            }
 
         };
 
@@ -41,6 +53,62 @@ define(['require',
             case 'es': return 'S';
             default: return 'E';
         }
+    };
+
+    /**
+     * @param sql           SQL query
+     * @param callback      Function to be executed after the query
+     * @param url_root      WDS root URL (optional)
+     * @param parameters    Override for default parameters (optional)
+     */
+    COMMONS.prototype.wdstable = function(sql, callback, url_root, parameters) {
+
+        /* Extend default configuration. */
+        var wds_settings = $.extend(true, {}, this.CONFIG.wds_settings, parameters);
+
+        /* Add SQL query. */
+        var sql_payload = {query: sql};
+        wds_settings.json = JSON.stringify(sql_payload);
+
+        /* Root URL. */
+        var url = url_root != null ? url_root : this.CONFIG.wds_root;
+        url += '/table/json/';
+
+        /* Define the HTTP method, POST by default, */
+        var method = 'POST';
+
+        /* Call WDS. */
+        $.ajax({
+
+            url: url,
+            type: method,
+            data: wds_settings,
+
+            success: function (response) {
+
+                /* Cast response to JSON, if needed. */
+                var json = response;
+                if (typeof json == 'string')
+                    json = $.parseJSON(response);
+
+                /* Invoke user's callback. */
+                if (callback != null)
+                    callback(json);
+
+            },
+
+            /* Default error handling. */
+            error: function(a) {
+                swal({
+                    title: translate.error,
+                    type: 'error',
+                    text: a.responseText,
+                    html: true
+                });
+            }
+
+        });
+
     };
 
     COMMONS.prototype.wdsclient = function(rest_service_name, parameters, callback, url_root) {
