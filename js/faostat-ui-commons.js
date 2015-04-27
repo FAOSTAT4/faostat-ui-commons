@@ -1,12 +1,8 @@
-define(['require',
-        'jquery',
-        'handlebars',
+define(['jquery',
         'text!faostat_ui_commons/html/templates.html',
         'text!faostat_ui_commons/resources/schemas/wds.json',
         'i18n!faostat_ui_commons/nls/translate',
-        'bootstrap',
-        'sweetAlert',
-        'amplify'], function (Require, $, Handlebars, templates, wds_schema, translate) {
+        'sweetAlert'], function ($, templates, wds_schema, translate) {
 
     'use strict';
 
@@ -72,7 +68,7 @@ define(['require',
 
         /* Root URL. */
         var url = url_root != null ? url_root : this.CONFIG.wds_root;
-        url += '/table/json/';
+        url += '/table/jsonobjects/';
 
         /* Define the HTTP method, POST by default, */
         var method = 'POST';
