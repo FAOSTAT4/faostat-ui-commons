@@ -14,7 +14,7 @@ This function is used to invoke WDS REST Services.
 |callback|Function invoked after the data is retrieved by WDS. The function takes an array of arrays as arguments.|
 |url_root|Optional. URL of WDS to override the default one.|
 
-Following an example of the usage of the WDS client:
+Following an example of the usage of the WDS client to invoke the [FAOSTAT Groups and Domains](http://faostat3.fao.org/wds/rest/groupsanddomains/faostat/E) service:
 
 ```javascript
 /* Initiate module. */
