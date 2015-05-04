@@ -58,6 +58,35 @@
                "$ref": "#/definitions/lang_faostat"
             }
          }
+      },
+      "procedures/usp_GetListBox": {
+         "type": "object",
+         "title": "Bulk Downloads",
+         "description": "List of FAOSTAT bulk downloads.",
+         "method": "GET",
+         "properties": {
+            "datasource": {
+               "$ref": "#/definitions/datasource"
+            },
+            "domain": {
+               "type": "string",
+               "title": "Domain Code",
+               "description": "FAOSTAT Domain Code."
+            },
+            "tab_group": {
+               "type": "integer",
+               "title": "Tab Group",
+               "description": "Tab group as displayed in FAOSTAT Download."
+            },
+            "tab_index": {
+               "type": "integer",
+               "title": "Tab Index",
+               "description": "Tab index within the group."
+            },
+            "lang_faostat": {
+               "$ref": "#/definitions/lang_faostat"
+            }
+         }
       }
    }
 }
