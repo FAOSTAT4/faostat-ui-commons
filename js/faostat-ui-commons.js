@@ -62,13 +62,9 @@ define(['jquery',
         /* Extend default configuration. */
         var wds_settings = $.extend(true, {}, this.CONFIG.wds_settings, parameters);
 
-        /* Add SQL query. */
-        var sql_payload = {query: sql};
-        wds_settings.json = JSON.stringify(sql_payload);
-
         /* Root URL. */
         var url = url_root != null ? url_root : this.CONFIG.wds_root;
-        url += '/table/jsonobjects/';
+        url += '/fenix/query/';
 
         /* Define the HTTP method, POST by default, */
         var method = 'POST';
@@ -78,7 +74,10 @@ define(['jquery',
 
             url: url,
             type: method,
-            data: wds_settings,
+            data: {
+                datasource: wds_settings.datasource,
+                query: sql
+            },
 
             success: function (response) {
 
