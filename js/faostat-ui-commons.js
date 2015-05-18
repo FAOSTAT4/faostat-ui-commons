@@ -45,7 +45,9 @@ define(['text!faostat_ui_commons/html/templates.html',
     COMMONS.prototype.iso2faostat = function(lang) {
         switch (lang) {
             case 'fr': return 'F';
+            case 'F': return 'F';
             case 'es': return 'S';
+            case 'S': return 'S';
             default: return 'E';
         }
     };
