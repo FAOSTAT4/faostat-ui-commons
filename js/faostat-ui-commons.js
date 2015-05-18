@@ -1,8 +1,7 @@
-define(['jquery',
-        'text!faostat_ui_commons/html/templates.html',
+define(['text!faostat_ui_commons/html/templates.html',
         'text!faostat_ui_commons/resources/schemas/wds.json',
         'i18n!faostat_ui_commons/nls/translate',
-        'sweetAlert'], function ($, templates, wds_schema, translate) {
+        'sweetAlert'], function (templates, wds_schema, translate) {
 
     'use strict';
 
